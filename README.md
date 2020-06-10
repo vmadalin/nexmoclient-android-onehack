@@ -11,7 +11,7 @@ This repo contain the Nexmo project for the Vonage OneHack event.
 
 ### Environment setup
 
-First off, you require the latest Android Studio 3.6.0 (or newer) to be able to build the app.
+First off, you require the latest Android Studio 4.0.0 (or newer) to be able to build the app.
 
 You need to have running the NPE (Nexmo Playground Environemnt) and use/create an application adding an user. The environment values should be specified on `gradle.properties` file with the following format:
 
