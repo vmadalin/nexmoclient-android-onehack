@@ -5,7 +5,7 @@
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-This repo contain a test app for the purpose of automating tests of our [nexmoclient-sdk-android](https://github.com/Vonage/nexmoclient-sdk-android).
+This repo contain the Nexmo project for the Vonage OneHack event.
 
 ## Development
 
