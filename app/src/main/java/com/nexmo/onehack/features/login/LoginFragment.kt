@@ -19,12 +19,12 @@ package com.nexmo.onehack.features.login
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.nexmo.base.android.BaseFragment
-import com.nexmo.base.android.annotations.OpenForTesting
+import com.nexmo.base.android.extensions.observe
 import com.nexmo.onehack.R
 import com.nexmo.onehack.databinding.FragmentLoginBinding
 
-@OpenForTesting
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
     layoutId = R.layout.fragment_login
 ) {
@@ -35,6 +35,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observe(viewModel.state, ::onStateChange)
         viewBinding.viewModel = viewModel
+    }
+
+    private fun onStateChange(state: LoginViewState) {
+        when(state) {
+            LoginViewState.CONNECTED -> findNavController()
+                .navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            else -> {}
+        }
     }
 }

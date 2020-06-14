@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/splash_fragment">
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.nexmo.onehack.features.login.LoginFragment"
-        android:label="LoginFragment">
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
     </fragment>
     <fragment
         android:id="@+id/splash_fragment"
         android:name="com.nexmo.onehack.features.splash.SplashFragment"
-        android:label="SplashFragment">
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splash_fragment_to_home_fragment"
-            app:destination="@id/home_fragment" />
+            android:id="@+id/action_splash_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.nexmo.onehack.features.home.HomeFragment"
-        android:label="HomeFragment">
-        <action
-            android:id="@+id/action_home_fragment_to_calls_fragment"
-            app:destination="@id/calls_fragment" />
-        <action
-            android:id="@+id/action_home_fragment_to_chat_fragment"
-            app:destination="@id/chat_fragment" />
-    </fragment>
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
 </navigation>
