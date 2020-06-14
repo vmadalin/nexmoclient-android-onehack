@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedIds">
+    <item
+        android:id="@+id/chat_fragment"
+        android:icon="@drawable/ic_chats"
+        android:title="@string/home_tab_chats" />
+    <item
+        android:id="@+id/calls_fragment"
+        android:icon="@drawable/ic_calls"
+        android:title="@string/home_tab_calls" />
+</menu>

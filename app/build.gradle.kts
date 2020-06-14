@@ -34,6 +34,7 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("kotlin-allopen")
+    id("androidx.navigation.safeargs")
 }
 
 allOpen {

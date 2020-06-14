@@ -32,6 +32,7 @@ object BuildDependencies {
         private const val NAVIGATION_VERSION = "2.2.2"
         const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:$NAVIGATION_VERSION"
         const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:$NAVIGATION_VERSION"
+        const val NAVIGATION_ARGS_PLUGIN = "androidx.navigation:navigation-safe-args-gradle-plugin:$NAVIGATION_VERSION"
 
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.1.0"
         const val CORE_KTX = "androidx.core:core-ktx:1.3.0"

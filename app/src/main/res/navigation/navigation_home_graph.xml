@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_home_graph.xml"
+    app:startDestination="@id/chat_fragment">
+    <fragment
+        android:id="@+id/calls_fragment"
+        android:name="com.nexmo.onehack.features.calls.CallsFragment"
+        android:label="CallsFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/chat_fragment"
+        android:name="com.nexmo.onehack.features.chats.ChatsFragment"
+        android:label="ChatFragment">
+    </fragment>
+</navigation>

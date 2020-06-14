@@ -19,6 +19,7 @@ buildscript {
 
     dependencies {
         classpath(BuildDependencies.Android.TOOLS_PLUGIN)
+        classpath(BuildDependencies.AndroidX.NAVIGATION_ARGS_PLUGIN)
         classpath(BuildDependencies.Kotlin.GRADLE_PLUGIN)
         classpath(BuildDependencies.Kotlin.ALLOPEN_PLUGIN)
     }
