@@ -15,4 +15,9 @@
     <string name="feature_calls_incoming_call_text">Incoming call..</string>
     <string name="feature_calls_incoming_answer_call_error">Ups an error happens when answer a call..</string>
 
+     <!-- Feature calls -->
+    <string name="feature_calls_outgoing_input_text">Type Username...</string>
+    <string name="feature_calls_outgoing_call_text">Outgoing call..</string>
+    <string name="feature_calls_outgoing_answer_call_error">Oops an error has occured </string>
+
 </resources>
