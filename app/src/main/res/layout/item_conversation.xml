@@ -18,8 +18,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{conversation.name}"
-            tools:text="@{conversation.name}"
+            android:padding="16dip"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:text='@{conversation.displayName.equals("") ||  conversation.displayName == null ? "EmptyName" : conversation.displayName}'
+            tools:text='@{conversation.displayName.equals("") || conversation.displayName == null ? "EmptyName" : conversation.displayName}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
