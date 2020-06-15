@@ -10,4 +10,9 @@
     <string name="feature_login_state_text">State: %s</string>
     <string name="feature_login_npe_text">NPE: %s</string>
     <string name="feature_login_token_text">User token: %s</string>
+
+    <!-- Feature calls -->
+    <string name="feature_calls_incoming_call_text">Incoming call..</string>
+    <string name="feature_calls_incoming_answer_call_error">Ups an error happens when answer a call..</string>
+
 </resources>
