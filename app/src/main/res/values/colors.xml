@@ -8,6 +8,6 @@
 
     <color name="incomingCallAcceptButtonColor">#0ca078</color>
     <color name="incomingCallRejectButtonColor">#f25a6b</color>
-    <color name="outgoingCallAcceptButtonColor">#CCE5CC</color>
-    <color name="outgoingCallEndButtonColor">#f25a6b</color>
+    <color name="onCallAcceptButtonColor">#CCE5CC</color>
+    <color name="onCallEndButtonColor">#f25a6b</color>
 </resources>

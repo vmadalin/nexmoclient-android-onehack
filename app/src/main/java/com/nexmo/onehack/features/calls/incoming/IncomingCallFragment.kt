@@ -34,9 +34,9 @@ class IncomingCallFragment : BaseFragment<FragmentIncomingCallBinding, IncomingC
 
     private fun onStateChange(state: IncomingCallViewStates) {
         when (state) {
-            CALL_ACCEPTED ->
-                findNavController()
-                    .navigate(IncomingCallFragmentDirections.actionIncomingCallFragmentToOnCallFragment())
+            CALL_ACCEPTED -> {}
+                //findNavController()
+                //    .navigate(IncomingCallFragmentDirections.actionIncomingCallFragmentToOnCallFragment())
             CALL_ACCEPT_ERROR -> Toast.makeText(
                 requireContext(),
                 R.string.feature_calls_incoming_answer_call_error,

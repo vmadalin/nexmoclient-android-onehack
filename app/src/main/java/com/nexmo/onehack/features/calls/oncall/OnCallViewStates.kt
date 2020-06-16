@@ -1,6 +1,6 @@
-package com.nexmo.onehack.features.calls.outgoing
+package com.nexmo.onehack.features.calls.oncall
 
-enum class OutgoingCallViewStates {
+enum class OnCallViewStates {
     CALL_ERROR,
     CALL_RINGING,
     CALL_ACCEPTED,

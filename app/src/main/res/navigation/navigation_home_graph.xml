@@ -3,43 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_home_graph.xml"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/outgoing_call_fragment">
-    <fragment
-        android:id="@+id/calls_fragment"
-        android:name="com.nexmo.onehack.features.calls.CallsFragment"
-        android:label="CallsFragment"
-        tools:layout="@layout/fragment_calls">
-        <action
-            android:id="@+id/action_calls_fragment_to_incoming_call_fragment"
-            app:destination="@id/incoming_call_fragment" />
-        <action
-            android:id="@+id/action_calls_fragment_to_on_call_fragment"
-            app:destination="@id/on_call_fragment" />
-    </fragment>
+    app:startDestination="@id/chats_fragment">
     <fragment
         android:id="@+id/incoming_call_fragment"
         android:name="com.nexmo.onehack.features.calls.incoming.IncomingCallFragment"
         android:label="IncomingCallFragment"
         tools:layout="@layout/fragment_incoming_call">
-        <action
-            android:id="@+id/action_incoming_call_fragment_to_on_call_fragment"
-            app:destination="@id/on_call_fragment" />
     </fragment>
      <fragment
-        android:id="@+id/outgoing_call_fragment"
-        android:name="com.nexmo.onehack.features.calls.outgoing.OutgoingCallFragment"
-        android:label="OutgoingCallFragment"
-        tools:layout="@layout/fragment_outgoing_call">
-        <action
-            android:id="@+id/action_outgoing_call_fragment_to_on_call_fragment"
-            app:destination="@id/on_call_fragment" />
-    </fragment>
-    <fragment
         android:id="@+id/on_call_fragment"
         android:name="com.nexmo.onehack.features.calls.oncall.OnCallFragment"
         android:label="OnCallFragment"
         tools:layout="@layout/fragment_on_call">
-    </fragment>
+         <argument
+             android:name="userName"
+             app:argType="string" />
+     </fragment>
     <fragment
         android:id="@+id/chats_fragment"
         android:name="com.nexmo.onehack.features.chats.ChatsFragment"
@@ -54,5 +33,8 @@
         android:name="com.nexmo.onehack.features.chats.onchat.OnChatFragment"
         android:label="OnChatFragment"
         tools:layout="@layout/fragment_on_chat">
+        <action
+            android:id="@+id/action_on_chat_fragment_to_on_call_fragment"
+            app:destination="@id/on_call_fragment" />
     </fragment>
 </navigation>
