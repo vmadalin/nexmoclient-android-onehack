@@ -8,6 +8,7 @@ import com.nexmo.base.android.extensions.observe
 import com.nexmo.client.NexmoConversation
 import com.nexmo.onehack.R
 import com.nexmo.onehack.databinding.FragmentOnChatBinding
+import com.nexmo.onehack.features.chats.ChatManager
 import com.nexmo.onehack.features.chats.ChatsViewModel
 import com.nexmo.onehack.features.chats.ChatsViewModelFactory
 import com.nexmo.onehack.features.chats.ConversationsRecyclerViewAdapter
@@ -23,8 +24,7 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, ChatsViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        observe(viewModel.conversation, ::onConversationChange)
+        //observe(viewModel.conversation, ::onConversationChange)
     }
 
     fun onConversationChange(conversation: NexmoConversation) {

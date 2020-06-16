@@ -5,9 +5,6 @@ import com.nexmo.client.NexmoConversation
 import com.nexmo.onehack.base.BaseViewHolder
 import com.nexmo.onehack.databinding.ItemConversationBinding
 
-//class ConversationViewHolder : BaseViewHolder
-
-
 class ConversationViewHolder(
     inflater: LayoutInflater
 ) : BaseViewHolder<ItemConversationBinding>(

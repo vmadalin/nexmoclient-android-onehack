@@ -22,4 +22,7 @@
     <string name="email">email</string>
     <string name="password">password</string>
 
+    <!-- Feature chat -->
+    <string name="feature_chat_open_detail_error">Ups an error happens when open a chat..</string>
+
 </resources>

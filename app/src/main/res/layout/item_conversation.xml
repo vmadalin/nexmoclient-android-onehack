@@ -8,13 +8,10 @@
         <variable
             name="conversation"
             type="com.nexmo.client.NexmoConversation" />
-
-        <variable
-            name="viewModel"
-            type="com.nexmo.onehack.features.chats.ChatsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_conversation_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,8 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> viewModel.getConversation()}"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

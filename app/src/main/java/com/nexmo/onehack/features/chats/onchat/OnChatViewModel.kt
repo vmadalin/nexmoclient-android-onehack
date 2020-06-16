@@ -15,13 +15,14 @@ import com.nexmo.onehack.features.chats.ChatsViewModel
 import com.nexmo.onehack.features.chats.ChatsViewModelFactory
 import com.nexmo.utils.logger.Log
 import kotlinx.android.synthetic.main.fragment_chats.*
+import com.nexmo.onehack.features.chats.ChatManager
 
 class OnChatViewModel: ViewModel() {
 
     val TAG = OnChatViewModel::class.java.name
     private val client = NexmoClient.get()
 
-    val conversation: NexmoConversation? = null
+    val conversation: NexmoConversation? = ChatManager.nexmoConversation
 
     fun sendMessage() {
         var text = ""//findViewById(R.id.edittext_chatbox)
@@ -32,7 +33,7 @@ class OnChatViewModel: ViewModel() {
 
         Log.d(TAG, "Send message: ${text}")
 
-        conversation!!.sendText(text, object: NexmoRequestListener<Void> {
+        conversation?.sendText(text, object: NexmoRequestListener<Void> {
             override fun onSuccess(result: Void?) {
                 Log.d(TAG, "onError sendMessage $result")
 

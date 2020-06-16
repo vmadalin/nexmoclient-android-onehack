@@ -29,7 +29,6 @@ class ChatsViewModel: ViewModel() {
     }
 
     fun getConversations() {
-        val order: NexmoPageOrder = NexmoPageOrder.NexmoMPageOrderAsc
         client.getConversations(10, "JOINED", NexmoPageOrder.NexmoMPageOrderAsc, object: NexmoRequestListener<NexmoConversationsPage> {
             override fun onError(apiError: NexmoApiError) {
                 Log.d(TAG, "onError getConversations $apiError")
@@ -38,22 +37,7 @@ class ChatsViewModel: ViewModel() {
             override fun onSuccess(result: NexmoConversationsPage?) {
                 Log.d(TAG, "onSuccess getConversations $result")
                 _conversations.postValue(result!!.data.toList())
-
             }
         })
     }
-
-    fun getConversation() {
-        client.getConversation("", object: NexmoRequestListener<NexmoConversation> {
-            override fun onError(apiError: NexmoApiError) {
-                Log.d(TAG, "onError getConversation $apiError")
-            }
-
-            override fun onSuccess(result: NexmoConversation?) {
-                Log.d(TAG, "onSuccess getConversation $result")
-                _conversation.postValue(result)
-            }
-        })
-    }
-
 }
