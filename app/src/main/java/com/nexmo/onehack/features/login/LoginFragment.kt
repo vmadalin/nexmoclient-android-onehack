@@ -16,18 +16,29 @@
 
 package com.nexmo.onehack.features.login
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.nexmo.base.android.BaseFragment
 import com.nexmo.base.android.extensions.observe
 import com.nexmo.onehack.R
 import com.nexmo.onehack.databinding.FragmentLoginBinding
+import com.nexmo.onehack.features.calls.incoming.IncomingCallViewStates
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
     layoutId = R.layout.fragment_login
 ) {
+
+    companion object {
+        private const val CALL_PERMISSIONS_REQUEST_ID = 123
+        private val CALL_PERMISSIONS_ARRAY =
+            arrayOf(Manifest.permission.READ_PHONE_STATE, Manifest.permission.RECORD_AUDIO)
+    }
 
     override val viewModel by viewModels<LoginViewModel> {
         LoginViewModelFactory()
@@ -37,13 +48,37 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onStateChange)
         viewBinding.viewModel = viewModel
+        requestCallPermissions()
     }
 
     private fun onStateChange(state: LoginViewState) {
-        when(state) {
+        when (state) {
             LoginViewState.CONNECTED -> findNavController()
                 .navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            LoginViewState.DISCONNECTED, LoginViewState.UNKNOWN ->
+                Toast.makeText(
+                    requireContext(),
+                    R.string.feature_login_error_text,
+                    Toast.LENGTH_SHORT
+                ).show()
             else -> {}
         }
+    }
+
+    private fun requestCallPermissions() {
+        CALL_PERMISSIONS_ARRAY
+            .filter {
+                ActivityCompat.checkSelfPermission(
+                    requireActivity(),
+                    it
+                ) != PackageManager.PERMISSION_GRANTED
+            }
+            .onEach {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    CALL_PERMISSIONS_ARRAY,
+                    CALL_PERMISSIONS_REQUEST_ID
+                )
+            }
     }
 }
