@@ -15,14 +15,13 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_gravity="top|center_horizontal"
             android:textSize="40sp"
-            android:text="@{viewModel.calleeName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,17 +29,33 @@
             app:layout_constraintVertical_bias="0.33"
             tools:text="User" />
 
-        <TextView
+        <Chronometer
+            android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/userNameTextView"
+            android:layout_below="@id/username"
+            android:layout_centerInParent="true"
+            android:text="@string/feature_calls_on_call_text"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
             android:layout_centerInParent="true"
             android:text="@string/feature_calls_on_call_text"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -51,8 +66,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="100dp"
             android:layout_marginBottom="100dp"
-            android:src="@drawable/ic_phone"
-            app:backgroundTint="@color/onCallAcceptButtonColor"
+            android:src="@drawable/ic_mute"
+            android:onClick="@{() -> viewModel.mute()}"
+            app:backgroundTint="@color/onCallMuteButtonColor"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

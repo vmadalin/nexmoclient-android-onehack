@@ -10,4 +10,5 @@
     <color name="incomingCallRejectButtonColor">#f25a6b</color>
     <color name="onCallAcceptButtonColor">#CCE5CC</color>
     <color name="onCallEndButtonColor">#f25a6b</color>
+    <color name="onCallMuteButtonColor">#5B71EA</color>
 </resources>

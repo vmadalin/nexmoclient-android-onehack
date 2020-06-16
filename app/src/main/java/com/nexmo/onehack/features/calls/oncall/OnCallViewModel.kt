@@ -2,9 +2,7 @@ package com.nexmo.onehack.features.calls.oncall
 
 
 import android.Manifest
-import android.content.pm.PackageManager
 import androidx.annotation.RequiresPermission
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,14 +12,10 @@ import com.nexmo.client.NexmoClient
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
 import com.nexmo.onehack.features.calls.CallManager
-import com.nexmo.utils.logger.Log
 
 class OnCallViewModel(
     private val nexmoClient: NexmoClient
 ) : ViewModel() {
-    private val TAG = OnCallViewModel::class.java.name
-
-    val calleeName = "UNKNOWN"
 
     private val _state = MutableLiveData<OnCallViewStates>()
     val state: LiveData<OnCallViewStates>
@@ -29,9 +23,7 @@ class OnCallViewModel(
 
     @RequiresPermission(Manifest.permission.RECORD_AUDIO)
     fun startCall(userName: String) {
-        Log.d(TAG, "STARTING CALL")
         _state.postValue(OnCallViewStates.CALL_RINGING)
-
         nexmoClient.call(userName, NexmoCallHandler.IN_APP, answerCallListener)
     }
 
@@ -54,7 +46,7 @@ class OnCallViewModel(
     private val answerCallListener = object : NexmoRequestListener<NexmoCall> {
         override fun onSuccess(call: NexmoCall?) {
             CallManager.onGoingCall = call
-            _state.postValue(OnCallViewStates.CALL_ACCEPTED)
+            _state.postValue(OnCallViewStates.CALL_ANSWERED)
         }
 
         override fun onError(apiError: NexmoApiError) {
