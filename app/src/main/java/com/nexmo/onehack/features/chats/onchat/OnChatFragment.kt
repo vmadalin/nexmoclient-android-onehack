@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import com.nexmo.base.android.BaseFragment
 import com.nexmo.base.android.extensions.observe
 import com.nexmo.client.NexmoConversation
+import com.nexmo.client.NexmoEvent
 import com.nexmo.onehack.R
 import com.nexmo.onehack.databinding.FragmentOnChatBinding
 import com.nexmo.onehack.features.chats.ChatManager
@@ -20,21 +21,26 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
     layoutId = R.layout.fragment_on_chat
 ) {
 
+    val onChatRecyclerViewAdapter = MessageListViewAdapter()
+
     override val viewModel by viewModels<OnChatViewModel> {
         OnChatViewModelFactory()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //observe(viewModel.conversation, ::onConversationChange)
+
+        observe(viewModel.event, ::onEventReceipt)
+
         button_chatbox_send.setOnClickListener {
             val textMessage = edittext_chatbox.text.toString()
             viewModel.sendMessage(textMessage)
         }
+
+        message_list.adapter = onChatRecyclerViewAdapter
     }
 
-    fun onConversationChange(conversation: NexmoConversation) {
-
-
+    fun onEventReceipt(event: NexmoEvent) {
+        onChatRecyclerViewAdapter.addEvent(event)
     }
 }

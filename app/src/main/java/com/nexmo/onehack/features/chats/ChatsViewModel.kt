@@ -16,13 +16,9 @@ class ChatsViewModel: ViewModel() {
     private val client = NexmoClient.get()
 
     private val _conversations = MutableLiveData<List<NexmoConversation>>()
-    private val _conversation = MutableLiveData<NexmoConversation>()
 
     val conversations: LiveData<List<NexmoConversation>>
         get() = _conversations
-
-    val conversation: LiveData<NexmoConversation>
-        get() = _conversation
 
     init {
         getConversations()
