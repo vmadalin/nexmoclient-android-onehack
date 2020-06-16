@@ -1,32 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="conversation"
-            type="com.nexmo.client.NexmoConversation" />
+                name="conversation"
+                type="com.nexmo.client.NexmoConversation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:paddingVertical="10dp">
+
+        <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:tint="#999999"
+                android:background="#EEEEEE"
+                app:srcCompat="@drawable/ic_chats" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:text='@{conversation.displayName.equals("") ||  conversation.displayName == null ? "EmptyName" : conversation.displayName}'
-            tools:text='@{conversation.displayName.equals("") || conversation.displayName == null ? "EmptyName" : conversation.displayName}'
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/conversation_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text='@{conversation.displayName.equals("") ||  conversation.displayName == null ? "EmptyName" : conversation.displayName}'
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/image_view"
+                app:layout_constraintTop_toTopOf="@id/image_view"
+                tools:text="Conversation name" />
+
+        <TextView
+                android:id="@+id/conversation_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sem sapien"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:lines="2"
+                app:layout_constraintStart_toEndOf="@id/image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/conversation_name"
+                tools:text="Conversation description" />
+
+        <View
+                android:id="@+id/microphoneContainerSeparator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#999999"
+                android:paddingTop="5dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/conversation_description"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
