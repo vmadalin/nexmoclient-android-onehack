@@ -25,6 +25,15 @@
             android:id="@+id/action_incoming_call_fragment_to_on_call_fragment"
             app:destination="@id/on_call_fragment" />
     </fragment>
+     <fragment
+        android:id="@+id/outgoing_call_fragment"
+        android:name="com.nexmo.onehack.features.calls.outgoing.OutgoingCallFragment"
+        android:label="OutgoingCallFragment"
+        tools:layout="@layout/fragment_outgoing_call">
+        <action
+            android:id="@+id/action_outgoing_call_fragment_to_on_call_fragment"
+            app:destination="@id/on_call_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/on_call_fragment"
         android:name="com.nexmo.onehack.features.calls.oncall.OnCallFragment"
