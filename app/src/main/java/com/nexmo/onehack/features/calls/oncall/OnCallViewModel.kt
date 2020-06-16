@@ -30,10 +30,12 @@ class OnCallViewModel(
     fun hangup() {
         CallManager.onGoingCall?.hangup(object : NexmoRequestListener<NexmoCall> {
             override fun onSuccess(p0: NexmoCall?) {
+                CallManager.onGoingCall = null
                 _state.postValue(OnCallViewStates.CALL_ENDED)
             }
 
             override fun onError(p0: NexmoApiError) {
+                CallManager.onGoingCall = null
                 _state.postValue(OnCallViewStates.CALL_ENDED)
             }
         })

@@ -13,8 +13,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         NexmoClient.get().addIncomingCallListener {
-            CallManager.onGoingCall = it
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToIncomingCallFragment())
+            if (CallManager.onGoingCall == null) {
+                CallManager.onGoingCall = it
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToIncomingCallFragment())
+            }
         }
     }
 }

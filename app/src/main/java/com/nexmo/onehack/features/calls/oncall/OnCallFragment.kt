@@ -53,7 +53,10 @@ class OnCallFragment : BaseFragment<FragmentOnCallBinding, OnCallViewModel>(
                 R.string.feature_calls_on_call_answer_call_error,
                 Toast.LENGTH_SHORT
             ).show()
-            CALL_REJECTED, CALL_ENDED -> findNavController().popBackStack()
+            CALL_REJECTED, CALL_ENDED -> {
+                findNavController().popBackStack(R.id.incoming_call_fragment, true);
+                findNavController().popBackStack()
+            }
         }
     }
 }

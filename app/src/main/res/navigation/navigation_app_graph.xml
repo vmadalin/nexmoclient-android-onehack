@@ -35,5 +35,17 @@
         android:name="com.nexmo.onehack.features.calls.incoming.IncomingCallFragment"
         android:label="IncomingCallFragment"
         tools:layout="@layout/fragment_incoming_call">
+        <action
+            android:id="@+id/action_incoming_call_fragment_to_on_call_fragment"
+            app:destination="@id/on_call_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/on_call_fragment"
+        android:name="com.nexmo.onehack.features.calls.oncall.OnCallFragment"
+        android:label="OnCallFragment"
+        tools:layout="@layout/fragment_on_call">
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
 </navigation>

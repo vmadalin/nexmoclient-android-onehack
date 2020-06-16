@@ -5,12 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/chats_fragment">
     <fragment
-        android:id="@+id/incoming_call_fragment"
-        android:name="com.nexmo.onehack.features.calls.incoming.IncomingCallFragment"
-        android:label="IncomingCallFragment"
-        tools:layout="@layout/fragment_incoming_call">
-    </fragment>
-     <fragment
         android:id="@+id/on_call_fragment"
         android:name="com.nexmo.onehack.features.calls.oncall.OnCallFragment"
         android:label="OnCallFragment"
