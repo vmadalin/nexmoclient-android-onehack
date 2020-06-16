@@ -13,21 +13,60 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_conversation_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="#EEEEEE"
+            android:tint="#999999"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_chats" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/conversation_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
+            android:layout_marginStart="20dp"
             android:text='@{conversation.displayName.equals("") ||  conversation.displayName == null ? "EmptyName" : conversation.displayName}'
-            tools:text='@{conversation.displayName.equals("") || conversation.displayName == null ? "EmptyName" : conversation.displayName}'
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/image_view"
+            app:layout_constraintTop_toTopOf="@id/image_view"
+            tools:text="Conversation name" />
+
+        <TextView
+            android:id="@+id/conversation_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:lines="2"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sem sapien"
+            android:textColor="#333333"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/image_view"
+            app:layout_constraintTop_toBottomOf="@id/conversation_name"
+            tools:text="Conversation description" />
+
+        <View
+            android:id="@+id/microphoneContainerSeparator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="#999999"
+            android:paddingTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/conversation_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
