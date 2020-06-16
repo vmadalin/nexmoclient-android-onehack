@@ -9,7 +9,8 @@
     <string name="feature_login_username_hint">username</string>
     <string name="feature_login_button_text">Login</string>
     <string name="feature_login_error_text">Ups an error happens when login..</string>
-
+    <string name="feature_login_email">email</string>
+    <string name="feature_login_password">password</string>
 
     <!-- Feature calls -->
     <string name="feature_calls_incoming_call_text">Incoming call..</string>
@@ -19,5 +20,6 @@
 
     <!-- Feature chat -->
     <string name="feature_chat_open_detail_error">Ups an error happens when open a chat..</string>
+
 
 </resources>
