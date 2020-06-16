@@ -16,8 +16,13 @@ class ChatsViewModel: ViewModel() {
     private val client = NexmoClient.get()
 
     private val _conversations = MutableLiveData<List<NexmoConversation>>()
+    private val _conversation = MutableLiveData<NexmoConversation>()
+
     val conversations: LiveData<List<NexmoConversation>>
         get() = _conversations
+
+    val conversation: LiveData<NexmoConversation>
+        get() = _conversation
 
     init {
         getConversations()
@@ -37,4 +42,18 @@ class ChatsViewModel: ViewModel() {
             }
         })
     }
+
+    fun getConversation() {
+        client.getConversation("", object: NexmoRequestListener<NexmoConversation> {
+            override fun onError(apiError: NexmoApiError) {
+                Log.d(TAG, "onError getConversation $apiError")
+            }
+
+            override fun onSuccess(result: NexmoConversation?) {
+                Log.d(TAG, "onSuccess getConversation $result")
+                _conversation.postValue(result)
+            }
+        })
+    }
+
 }

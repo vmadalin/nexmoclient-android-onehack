@@ -8,5 +8,5 @@ class OnChatViewModelFactory : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
         // TODO
-        null as T
+        OnChatViewModel() as T
 }
