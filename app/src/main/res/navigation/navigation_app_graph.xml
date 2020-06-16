@@ -25,5 +25,15 @@
         android:id="@+id/home_fragment"
         android:name="com.nexmo.onehack.features.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_fragment_to_incoming_call_fragment"
+            app:destination="@id/incoming_call_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incoming_call_fragment"
+        android:name="com.nexmo.onehack.features.calls.incoming.IncomingCallFragment"
+        android:label="IncomingCallFragment"
+        tools:layout="@layout/fragment_incoming_call">
+    </fragment>
 </navigation>

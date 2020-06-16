@@ -3,16 +3,18 @@ package com.nexmo.onehack.features.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.fragment.findNavController
+import com.nexmo.client.NexmoClient
 import com.nexmo.onehack.R
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.nexmo.onehack.features.calls.CallManager
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val homeNavHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
-        bottom_navigation.setupWithNavController(homeNavHostFragment.navController)
+        NexmoClient.get().addIncomingCallListener {
+            CallManager.onGoingCall = it
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToIncomingCallFragment())
+        }
     }
 }
