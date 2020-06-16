@@ -19,5 +19,7 @@
     <string name="feature_calls_outgoing_input_text">Type Username...</string>
     <string name="feature_calls_outgoing_call_text">Outgoing call..</string>
     <string name="feature_calls_outgoing_answer_call_error">Oops an error has occured </string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 
 </resources>
