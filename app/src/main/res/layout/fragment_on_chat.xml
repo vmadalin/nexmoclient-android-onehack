@@ -64,7 +64,6 @@
                 android:layout_height="48dp"
                 android:gravity="center"
                 android:layout_gravity="bottom"
-                android:onClick="@{() -> viewModel.sendMessage()}"
                 app:srcCompat="@android:drawable/ic_menu_send"/>
 
         </LinearLayout>

@@ -6,7 +6,5 @@ import androidx.lifecycle.ViewModelProvider
 class OnChatViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        // TODO
-        OnChatViewModel() as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T = OnChatViewModel() as T
 }
