@@ -34,12 +34,6 @@ class LoginViewModel(
     private val jwtHelper: JWTHelper
 ) : ViewModel() {
 
-    val envNPEName = nexmoEnvironment.envName
-
-    private var _userToken = MutableLiveData<String>()
-    val userToken: LiveData<String>
-        get() = _userToken
-
     private val _state = MutableLiveData<LoginViewState>()
     val state: LiveData<LoginViewState>
         get() = _state
@@ -57,7 +51,6 @@ class LoginViewModel(
 
     fun loginUser() {
         generateUserToken().run {
-            _userToken.postValue(this)
             nexmoClient.login(this)
         }
     }
