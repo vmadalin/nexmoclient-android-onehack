@@ -10,7 +10,6 @@ import com.nexmo.client.NexmoConversationsPage
 import com.nexmo.client.NexmoPageOrder
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
-import com.nexmo.onehack.features.login.LoginViewState
 
 class ChatsViewModel: ViewModel() {
     private val TAG = ChatsViewModel::class.java.name

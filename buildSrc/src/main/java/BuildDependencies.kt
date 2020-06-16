@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.com.amazonaws.services.s3.model.MaterialsDescriptionProvider
+
 /*
  * Copyright (C) 2020 Nexmo, Inc.
  *
@@ -22,6 +24,10 @@ object BuildDependencies {
 
     object Android {
         const val TOOLS_PLUGIN = "com.android.tools.build:gradle:4.0.0"
+    }
+
+    object Common {
+        const val MATERIAL = "com.google.android.material:material:1.1.0"
     }
 
     object AndroidX {

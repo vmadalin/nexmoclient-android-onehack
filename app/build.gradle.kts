@@ -119,6 +119,7 @@ dependencies {
     implementation(BuildDependencies.AndroidX.NAVIGATION_FRAGMENT)
     implementation(BuildDependencies.AndroidX.NAVIGATION_UI)
     implementation(BuildDependencies.NEXMO + nexmoSdkVersion)
+    implementation(BuildDependencies.Common.MATERIAL)
 
     debugImplementation(BuildDependencies.Test.FRAGMENT_TESTING)
 
