@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_home_graph.xml"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/chats_fragment">
+    app:startDestination="@id/outgoing_call_fragment">
     <fragment
         android:id="@+id/calls_fragment"
         android:name="com.nexmo.onehack.features.calls.CallsFragment"

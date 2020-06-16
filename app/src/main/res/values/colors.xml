@@ -6,6 +6,8 @@
     <color name="itemMenuChecked">#9d9d9d</color>
     <color name="itemMenuUnchecked">#1b1b1b</color>
 
-    <color name="incomingCallAcceptButtonColor">#f25a6b</color>
-    <color name="incomingCallRejectButtonColor">#0ca078</color>
+    <color name="incomingCallAcceptButtonColor">#0ca078</color>
+    <color name="incomingCallRejectButtonColor">#f25a6b</color>
+    <color name="outgoingCallAcceptButtonColor">#CCE5CC</color>
+    <color name="outgoingCallEndButtonColor">#f25a6b</color>
 </resources>
