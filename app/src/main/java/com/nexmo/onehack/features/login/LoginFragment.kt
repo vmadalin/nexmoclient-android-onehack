@@ -17,12 +17,17 @@
 package com.nexmo.onehack.features.login
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.findNavController
 import com.nexmo.base.android.BaseFragment
 import com.nexmo.base.android.extensions.observe
@@ -49,6 +54,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
         observe(viewModel.state, ::onStateChange)
         viewBinding.viewModel = viewModel
         requestCallPermissions()
+
+        findNavController().addOnDestinationChangedListener { _: NavController, _: NavDestination, _: Bundle? ->
+            hideKeyboard()
+        }
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager = activity?.getSystemService(Context
+            .INPUT_METHOD_SERVICE)
+            as?
+            InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, InputMethodManager
+            .HIDE_NOT_ALWAYS)
     }
 
     private fun onStateChange(state: LoginViewState) {

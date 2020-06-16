@@ -16,6 +16,7 @@ class ChatsViewModel: ViewModel() {
     private val client = NexmoClient.get()
 
     private val _conversations = MutableLiveData<List<NexmoConversation>>()
+
     val conversations: LiveData<List<NexmoConversation>>
         get() = _conversations
 
@@ -24,7 +25,6 @@ class ChatsViewModel: ViewModel() {
     }
 
     fun getConversations() {
-        val order: NexmoPageOrder = NexmoPageOrder.NexmoMPageOrderAsc
         client.getConversations(10, "JOINED", NexmoPageOrder.NexmoMPageOrderAsc, object: NexmoRequestListener<NexmoConversationsPage> {
             override fun onError(apiError: NexmoApiError) {
                 Log.d(TAG, "onError getConversations $apiError")
@@ -33,7 +33,6 @@ class ChatsViewModel: ViewModel() {
             override fun onSuccess(result: NexmoConversationsPage?) {
                 Log.d(TAG, "onSuccess getConversations $result")
                 _conversations.postValue(result!!.data.toList())
-
             }
         })
     }

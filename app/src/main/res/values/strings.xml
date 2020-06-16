@@ -14,9 +14,10 @@
     <!-- Feature calls -->
     <string name="feature_calls_incoming_call_text">Incoming call..</string>
     <string name="feature_calls_incoming_answer_call_error">Oops an error happens when answer a call..</string>
-
-     <!-- Feature calls -->
     <string name="feature_calls_on_call_text">Calling</string>
-    <string name="feature_calls_oncall_answer_call_error">Oops an error has occured</string>
+    <string name="feature_calls_on_call_answer_call_error">Oops an error has occured</string>
+
+    <!-- Feature chat -->
+    <string name="feature_chat_open_detail_error">Ups an error happens when open a chat..</string>
 
 </resources>

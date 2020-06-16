@@ -43,7 +43,7 @@ class OnCallFragment : BaseFragment<FragmentOnCallBinding, OnCallViewModel>(
             CALL_RINGING -> {} // TODO start timer
             CALL_ERROR -> Toast.makeText(
                 requireContext(),
-                R.string.feature_calls_oncall_answer_call_error,
+                R.string.feature_calls_on_call_answer_call_error,
                 Toast.LENGTH_SHORT
             ).show()
             CALL_REJECTED, CALL_ENDED -> findNavController().popBackStack()
