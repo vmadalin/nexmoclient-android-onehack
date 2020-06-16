@@ -1,10 +1,14 @@
 package com.nexmo.onehack.features.chats.onchat
 
 import android.view.LayoutInflater
+import com.nexmo.onehack.base.BaseViewHolder
+import com.nexmo.onehack.databinding.ItemSentMessageBinding
 
-class SentdMessageViewHolder(
+class SentMessageViewHolder(
     inflater: LayoutInflater
-) : EventViewHolder(inflater) {
+) : BaseViewHolder<ItemSentMessageBinding>(
+    binding = ItemSentMessageBinding.inflate(inflater)
+)  {
 
     fun bind(content: String?, time:String?) {
         binding.textContent = content

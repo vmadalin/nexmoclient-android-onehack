@@ -6,60 +6,43 @@ import androidx.lifecycle.ViewModel
 import com.nexmo.client.*
 import com.nexmo.client.request_listener.NexmoApiError
 import com.nexmo.client.request_listener.NexmoRequestListener
-import com.nexmo.onehack.databinding.FragmentOnCallBinding
 import com.nexmo.utils.logger.Log
 import com.nexmo.onehack.features.chats.ChatManager
-import kotlinx.android.synthetic.main.fragment_on_chat.*
 
 class OnChatViewModel: ViewModel() {
 
     val TAG = OnChatViewModel::class.java.name
 
-    lateinit var binding: FragmentOnCallBinding
-    private val client = NexmoClient.get()
+    private val conversation: NexmoConversation? = ChatManager.nexmoConversation
+    private val eventList = mutableListOf<NexmoEvent>()
 
-    val conversation: NexmoConversation? = ChatManager.nexmoConversation
-
-    private val _event = MutableLiveData<NexmoEvent>()
-
-    val event: LiveData<NexmoEvent>
+    private val _event = MutableLiveData<MutableList<NexmoEvent>>()
+    val event: LiveData<MutableList<NexmoEvent>>
         get() = _event
 
     init {
         addListeners()
+        conversation?.getEvents(10, null, null, EventsPageListener())
     }
 
     fun addListeners() {
         conversation?.addMessageEventListener(object : NexmoMessageEventListener{
-            override fun onTypingEvent(p0: NexmoTypingEvent) {
-                print("HELLOO")
-            }
+            override fun onTypingEvent(p0: NexmoTypingEvent) {}
 
-            override fun onAttachmentEvent(p0: NexmoAttachmentEvent) {
-                print("HELLOO")
-            }
+            override fun onAttachmentEvent(p0: NexmoAttachmentEvent) {}
 
             override fun onTextEvent(textEvent: NexmoTextEvent) {
-                print("HELLOO")
-//                onChatRecyclerViewAdapter.addEvent(textEvent)
-                _event.postValue(textEvent)
+                if (!eventList.contains(textEvent)) {
+                    eventList.add(textEvent)
+                    _event.postValue(eventList)
+                }
             }
 
-            override fun onSeenReceipt(p0: NexmoSeenEvent) {
-                print("HELLOO")
-            }
+            override fun onSeenReceipt(p0: NexmoSeenEvent) {}
 
-            override fun onEventDeleted(p0: NexmoDeletedEvent) {
-                print("HELLOO")
-            }
+            override fun onEventDeleted(p0: NexmoDeletedEvent) {}
 
-
-            override fun onDeliveredReceipt(p0: NexmoDeliveredEvent) {
-//                adapter.addEvent(p0)
-//                binding.recyclerView.scrollToPosition(adapter.itemCount - 1)
-//                binding.reyclerviewMessageList.scrollToPosition(adapter.itemCount - 1)
-                print("HELLOO")
-            }
+            override fun onDeliveredReceipt(p0: NexmoDeliveredEvent) {}
         })
     }
 
@@ -73,14 +56,39 @@ class OnChatViewModel: ViewModel() {
         conversation?.sendText(text, object: NexmoRequestListener<Void> {
             override fun onSuccess(result: Void?) {
                 Log.d(TAG, "onError sendMessage $result")
-
-
             }
 
             override fun onError(apiError: NexmoApiError) {
                 Log.d(TAG, "onError sendMessage $apiError")
             }
-
         })
+    }
+
+    inner class EventsPageListener : NexmoRequestListener<NexmoEventsPage>{
+
+        override fun onError(error: NexmoApiError) {}
+
+        override fun onSuccess(result: NexmoEventsPage?) {
+            for (event: NexmoEvent in result!!.data){
+                when(event){
+                    is NexmoTextEvent -> {
+                        event.markAsDelivered(object: NexmoRequestListener<Any>{
+                            override fun onSuccess(result: Any?) {
+                                event.updateAsDelivered(event.conversation.myMember.memberId, (System.currentTimeMillis()/1000).toString())
+                            }
+
+                            override fun onError(error: NexmoApiError) {}
+                        })
+                        if (!eventList.contains(event)) {
+                            eventList.add(event)
+                            _event.postValue(eventList)
+                        }
+                    }
+                }
+            }
+            if (result.isNextPageExist){
+                result.getNext(EventsPageListener())
+            }
+        }
     }
 }
