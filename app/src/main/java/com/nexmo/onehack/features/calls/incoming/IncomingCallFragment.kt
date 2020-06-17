@@ -14,7 +14,8 @@ import com.nexmo.onehack.features.calls.incoming.IncomingCallViewStates.CALL_ACC
 import com.nexmo.onehack.features.calls.incoming.IncomingCallViewStates.CALL_REJECTED
 
 class IncomingCallFragment : BaseFragment<FragmentIncomingCallBinding, IncomingCallViewModel>(
-    layoutId = R.layout.fragment_incoming_call
+    layoutId = R.layout.fragment_incoming_call,
+    titleId = R.string.feature_calls_incoming_title
 ) {
 
     override val viewModel by viewModels<IncomingCallViewModel> {

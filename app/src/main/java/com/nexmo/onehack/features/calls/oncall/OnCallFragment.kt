@@ -15,7 +15,8 @@ import com.nexmo.onehack.features.calls.oncall.OnCallViewStates.*
 import kotlinx.android.synthetic.main.fragment_on_call.*
 
 class OnCallFragment : BaseFragment<FragmentOnCallBinding, OnCallViewModel>(
-    layoutId = R.layout.fragment_on_call
+    layoutId = R.layout.fragment_on_call,
+    titleId = R.string.feature_calls_on_call_title
 ) {
 
     private val args by navArgs<OnCallFragmentArgs>()

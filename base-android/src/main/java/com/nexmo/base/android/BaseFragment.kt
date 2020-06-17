@@ -20,7 +20,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -35,7 +37,9 @@ import androidx.lifecycle.ViewModel
  */
 abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
     @LayoutRes
-    private val layoutId: Int
+    private val layoutId: Int,
+    @StringRes
+    private val titleId: Int
 ) : Fragment() {
 
     abstract val viewModel: M
@@ -62,6 +66,7 @@ abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
     ): View? {
         viewBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
+        requireCompatActivity().supportActionBar?.title = getString(titleId)
         return viewBinding.root
     }
 

@@ -16,7 +16,8 @@ import com.nexmo.onehack.features.chats.ChatManager
 import kotlinx.android.synthetic.main.fragment_on_chat.*
 
 class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
-    layoutId = R.layout.fragment_on_chat
+    layoutId = R.layout.fragment_on_chat,
+    titleId = R.string.feature_on_chat_title
 ) {
 
     private val onChatRecyclerViewAdapter = MessageListViewAdapter()

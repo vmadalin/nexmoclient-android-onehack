@@ -6,6 +6,6 @@
     <item
         android:id="@+id/call_button"
         android:icon="@drawable/ic_phone"
-        android:title="@string/feature_chat_call_button"
+        android:title="@string/feature_on_chat_call_button"
         app:showAsAction="always" />
 </menu>

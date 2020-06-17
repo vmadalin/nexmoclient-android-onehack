@@ -36,7 +36,8 @@ import com.nexmo.onehack.databinding.FragmentLoginBinding
 import com.nexmo.onehack.features.calls.incoming.IncomingCallViewStates
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(
-    layoutId = R.layout.fragment_login
+    layoutId = R.layout.fragment_login,
+    titleId = R.string.feature_login_title
 ) {
 
     companion object {
