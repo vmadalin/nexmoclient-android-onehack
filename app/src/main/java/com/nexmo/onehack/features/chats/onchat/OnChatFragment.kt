@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexmo.base.android.BaseFragment
@@ -56,7 +57,7 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
                 if (allMembers.size > 1) {
                     val userName = allMembers.last()?.user?.name
                     userName?.let {
-                        OnChatFragmentDirections.actionOnChatFragmentToOnCallFragment(it)
+                        findNavController().navigate(OnChatFragmentDirections.actionOnChatFragmentToOnCallFragment(it))
                     }
                 }
                 true
