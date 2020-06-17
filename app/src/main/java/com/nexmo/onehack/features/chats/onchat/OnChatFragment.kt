@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexmo.base.android.BaseFragment
 import com.nexmo.base.android.extensions.observe
@@ -36,8 +37,9 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
             viewModel.sendMessage(textMessage)
         }
 
-        val linearLayoutManager = LinearLayoutManager(requireContext())
-        linearLayoutManager.stackFromEnd = true
+        val linearLayoutManager = GridLayoutManager(requireContext(), 1)
+        linearLayoutManager.spanSizeLookup= onChatRecyclerViewAdapter.getSpanSizeLookup()
+        linearLayoutManager.reverseLayout = true
         message_list.layoutManager = linearLayoutManager
         message_list.adapter = onChatRecyclerViewAdapter
         setHasOptionsMenu(true)

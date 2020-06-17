@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nexmo.client.*
@@ -36,12 +37,19 @@ class MessageListViewAdapter: ListAdapter<NexmoEvent, RecyclerView.ViewHolder>(o
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val simpleDateFormat = SimpleDateFormat("HH:mm:ss")
         val event = getItem(position)
-        when(holder) {
+        when (holder) {
             is ReceivedMessageViewHolder -> {
-                holder.bind("${(event as NexmoTextEvent).fromMember.user.name}:", event.text, simpleDateFormat.format(event.creationDate))
+                holder.bind(
+                    "${(event as NexmoTextEvent).fromMember.user.name}:",
+                    event.text,
+                    simpleDateFormat.format(event.creationDate)
+                )
             }
             is SentMessageViewHolder -> {
-                holder.bind((event as NexmoTextEvent).text, simpleDateFormat.format(event.creationDate))
+                holder.bind(
+                    (event as NexmoTextEvent).text,
+                    simpleDateFormat.format(event.creationDate)
+                )
             }
         }
     }
@@ -55,6 +63,13 @@ class MessageListViewAdapter: ListAdapter<NexmoEvent, RecyclerView.ViewHolder>(o
             ItemView.SENT
         } else {
             ItemView.RECEIVED
+        }
+    }
+
+    fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup =
+        object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return 1
         }
     }
 }
