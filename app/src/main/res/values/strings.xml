@@ -20,6 +20,6 @@
 
     <!-- Feature chat -->
     <string name="feature_chat_open_detail_error">Ups an error happens when open a chat..</string>
-
+    <string name="feature_chat_call_button">Call</string>
 
 </resources>
