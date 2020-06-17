@@ -66,5 +66,6 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
 
     private fun onEventReceipt(eventsList: List<NexmoEvent>) {
         onChatRecyclerViewAdapter.submitList(eventsList)
+        message_list.smoothScrollToPosition(0)
     }
 }

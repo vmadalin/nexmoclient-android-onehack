@@ -14,7 +14,7 @@ class OnChatViewModel: ViewModel() {
     val TAG = OnChatViewModel::class.java.name
 
     private val conversation: NexmoConversation? = ChatManager.nexmoConversation
-    private val eventList = mutableListOf<NexmoEvent>()
+    private var eventList = mutableListOf<NexmoEvent>()
 
     private val _event = MutableLiveData<MutableList<NexmoEvent>>()
     val event: LiveData<MutableList<NexmoEvent>>
@@ -22,7 +22,7 @@ class OnChatViewModel: ViewModel() {
 
     init {
         addListeners()
-        conversation?.getEvents(10, null, null, EventsPageListener())
+        conversation?.getEvents(10, NexmoPageOrder.NexmoPageOrderDesc, null, EventsPageListener())
     }
 
     fun addListeners() {
@@ -33,7 +33,10 @@ class OnChatViewModel: ViewModel() {
 
             override fun onTextEvent(textEvent: NexmoTextEvent) {
                 if (!eventList.contains(textEvent)) {
-                    eventList.add(textEvent)
+                    val list = emptyList<NexmoEvent>().toMutableList()
+                    list.add(textEvent)
+                    list.addAll(eventList)
+                    eventList = list
                     _event.postValue(eventList)
                 }
             }
@@ -81,13 +84,14 @@ class OnChatViewModel: ViewModel() {
                         })
                         if (!eventList.contains(event)) {
                             eventList.add(event)
-                            _event.postValue(eventList)
                         }
                     }
                 }
             }
             if (result.isNextPageExist){
                 result.getNext(EventsPageListener())
+            } else {
+                _event.postValue(eventList)
             }
         }
     }
