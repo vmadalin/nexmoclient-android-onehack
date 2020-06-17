@@ -3,6 +3,7 @@ package com.nexmo.onehack.features.chats.onchat
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexmo.base.android.BaseFragment
 import com.nexmo.base.android.extensions.observe
 import com.nexmo.client.NexmoEvent
@@ -22,7 +23,6 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         observe(viewModel.event, ::onEventReceipt)
 
         button_chatbox_send.setOnClickListener {
@@ -31,6 +31,9 @@ class OnChatFragment : BaseFragment<FragmentOnChatBinding, OnChatViewModel>(
             viewModel.sendMessage(textMessage)
         }
 
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.stackFromEnd = true
+        message_list.layoutManager = linearLayoutManager
         message_list.adapter = onChatRecyclerViewAdapter
     }
 
