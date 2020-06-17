@@ -65,7 +65,7 @@
                         android:id="@+id/username_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="textPassword"
                         android:lines="1"
                         android:maxLines="1" />
 
