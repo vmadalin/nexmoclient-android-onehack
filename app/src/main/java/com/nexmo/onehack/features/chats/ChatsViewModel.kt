@@ -25,7 +25,7 @@ class ChatsViewModel: ViewModel() {
     }
 
     fun getConversations() {
-        client.getConversations(10, "JOINED", NexmoPageOrder.NexmoMPageOrderAsc, object: NexmoRequestListener<NexmoConversationsPage> {
+        client.getConversations(5, "JOINED", NexmoPageOrder.NexmoPageOrderDesc, object: NexmoRequestListener<NexmoConversationsPage> {
             override fun onError(apiError: NexmoApiError) {
                 Log.d(TAG, "onError getConversations $apiError")
             }
@@ -37,3 +37,4 @@ class ChatsViewModel: ViewModel() {
         })
     }
 }
+
